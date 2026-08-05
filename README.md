@@ -1,138 +1,63 @@
-# API Cuatro Métodos
+# API de Estudiantes
 
-## Información del estudiante
+## Nombre
 
-**Nombre:** Denilson Yair Díaz López
+Denilson Yair Díaz López
 
-**Curso:** Arquitectura de Sistemas
+## Curso
 
----
+Arquitectura de Sistemas
 
 ## Descripción
 
-Este proyecto consiste en desarrollar una API REST utilizando **TypeScript** y **Express**, implementando los cuatro métodos HTTP principales:
+API REST desarrollada en TypeScript utilizando Express.
+
+Incluye los métodos HTTP:
 
 - GET
 - POST
 - PUT
+- PATCH
 - DELETE
 
-La información se almacena temporalmente en un arreglo en memoria, por lo que no es necesaria una base de datos.
+Además incorpora documentación automática mediante Swagger.
 
 ---
 
-# Tecnologías utilizadas
+## Instalación
 
-- Node.js
-- TypeScript
-- Express
-- tsx
-- Git
-- GitHub
-- Insomnia
-
----
-
-# Instalación
-
-1. Clonar el repositorio
+Clonar el repositorio
 
 ```bash
 git clone https://github.com/DenilsonDiaz/API_Cuatro_Metodos.git
 ```
 
-2. Entrar a la carpeta
+Entrar al proyecto
 
 ```bash
 cd API_Cuatro_Metodos
 ```
 
-3. Cambiar a la rama de la tarea
-
-```bash
-git checkout hw-01
-```
-
-4. Instalar dependencias
+Instalar dependencias
 
 ```bash
 npm install
 ```
 
-5. Ejecutar el proyecto
+Ejecutar la API
 
 ```bash
 npm run start
 ```
 
-La API iniciará en:
+Servidor
 
 ```
 http://localhost:3000
 ```
 
----
-
-# Endpoints
-
-## GET
-
-Obtiene todos los estudiantes.
+Documentación
 
 ```
-GET /estudiantes
+http://localhost:3000/docs
 ```
-
----
-
-## POST
-
-Agrega un estudiante.
-
-```
-POST /estudiantes
-```
-
-Ejemplo:
-
-```json
-{
-    "nombre":"Ana",
-    "carrera":"Arquitectura"
-}
-```
-
----
-
-## PUT
-
-Actualiza un estudiante.
-
-```
-PUT /estudiantes/1
-```
-
-Ejemplo:
-
-```json
-{
-    "nombre":"Denilson Yair",
-    "carrera":"Ingeniería en Sistemas"
-}
-```
-
----
-
-## DELETE
-
-Elimina un estudiante.
-
-```
-DELETE /estudiantes/2
-```
-
----
-
-# Autor
-
-Denilson Yair Díaz López
