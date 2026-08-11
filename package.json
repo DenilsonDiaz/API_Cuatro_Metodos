@@ -1,0 +1,22 @@
+{
+  "name": "api_cuatro_metodos",
+  "version": "1.0.0",
+  "description": "API REST de una Biblioteca Digital con función de aptitud arquitectónica",
+  "main": "dist/app.js",
+  "scripts": {
+    "dev": "tsx watch src/app.ts",
+    "start": "tsx src/app.ts",
+    "build": "tsc"
+  },
+  "author": "Denilson Yair Díaz López",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^5.2.1"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.6",
+    "@types/node": "^26.1.2",
+    "tsx": "^4.23.5",
+    "typescript": "^5.9.2"
+  }
+}

@@ -1,138 +1,74 @@
-# API Cuatro Métodos
+# API REST - Biblioteca Digital
 
 ## Información del estudiante
 
 **Nombre:** Denilson Yair Díaz López
 
-**Curso:** Arquitectura de Sistemas
+**Carnet:** 202308106
 
----
+**Curso:** Arquitectura de Sistemas
 
 ## Descripción
 
-Este proyecto consiste en desarrollar una API REST utilizando **TypeScript** y **Express**, implementando los cuatro métodos HTTP principales:
+API REST desarrollada con TypeScript y Express para gestionar libros de una biblioteca digital. Los datos se almacenan temporalmente en memoria.
 
-- GET
-- POST
-- PUT
-- DELETE
+Además del CRUD de libros, incluye una función de aptitud arquitectónica que comprueba estas condiciones:
 
-La información se almacena temporalmente en un arreglo en memoria, por lo que no es necesaria una base de datos.
+- La biblioteca no debe superar los 100 libros.
+- El porcentaje de libros prestados debe ser menor al 80 %.
 
----
+Cuando ambas condiciones se cumplen, `/health/fitness` devuelve `Healthy` con código 200. Si alguna no se cumple, devuelve `Degradación de Calidad` con código 503.
 
-# Tecnologías utilizadas
-
-- Node.js
-- TypeScript
-- Express
-- tsx
-- Git
-- GitHub
-- Insomnia
-
----
-
-# Instalación
-
-1. Clonar el repositorio
-
-```bash
-git clone https://github.com/DenilsonDiaz/API_Cuatro_Metodos.git
-```
-
-2. Entrar a la carpeta
-
-```bash
-cd API_Cuatro_Metodos
-```
-
-3. Cambiar a la rama de la tarea
-
-```bash
-git checkout hw-01
-```
-
-4. Instalar dependencias
+## Instalación y ejecución
 
 ```bash
 npm install
-```
-
-5. Ejecutar el proyecto
-
-```bash
 npm run start
 ```
 
-La API iniciará en:
+Servidor local:
 
-```
+```text
 http://localhost:3000
 ```
 
----
-
-# Endpoints
-
-## GET
-
-Obtiene todos los estudiantes.
-
-```
-GET /estudiantes
-```
-
----
-
-## POST
-
-Agrega un estudiante.
-
-```
-POST /estudiantes
-```
-
-Ejemplo:
+## Estructura de un libro
 
 ```json
 {
-    "nombre":"Ana",
-    "carrera":"Arquitectura"
+  "titulo": "Clean Architecture",
+  "autor": "Robert C. Martin",
+  "prestado": false
 }
 ```
 
----
+## Endpoints
 
-## PUT
+| Método | Ruta | Función |
+|---|---|---|
+| GET | `/books` | Lista todos los libros |
+| GET | `/books/:id` | Obtiene un libro por su ID |
+| POST | `/books` | Agrega un libro; requiere JSON |
+| PUT | `/books/:id` | Reemplaza todos los datos de un libro |
+| PATCH | `/books/:id` | Actualiza uno o más campos |
+| DELETE | `/books/:id` | Elimina un libro |
+| GET | `/health/fitness` | Evalúa la salud arquitectónica |
 
-Actualiza un estudiante.
-
-```
-PUT /estudiantes/1
-```
-
-Ejemplo:
+## Ejemplo del reporte de salud
 
 ```json
 {
-    "nombre":"Denilson Yair",
-    "carrera":"Ingeniería en Sistemas"
+  "estado": "Healthy",
+  "metricas": {
+    "librosTotales": 3,
+    "librosPrestados": 1,
+    "porcentajePrestados": 33.33,
+    "limiteCapacidad": 100,
+    "limitePorcentajePrestados": 80
+  },
+  "restricciones": {
+    "capacidad": "Cumple",
+    "proporcionPrestados": "Cumple"
+  }
 }
 ```
-
----
-
-## DELETE
-
-Elimina un estudiante.
-
-```
-DELETE /estudiantes/2
-```
-
----
-
-# Autor
-
-Denilson Yair Díaz López
