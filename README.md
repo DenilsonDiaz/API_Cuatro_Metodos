@@ -1,138 +1,99 @@
-# API Cuatro Métodos
+# API de Gestión Universitaria con Django
 
-## Información del estudiante
+API REST desarrollada con Django y Django REST Framework para administrar información de una institución universitaria.
 
-**Nombre:** Denilson Yair Díaz López
+## Autor
 
-**Curso:** Arquitectura de Sistemas
+**Denilson Yair Díaz López**
 
----
+## Características
 
-## Descripción
+- Cinco aplicaciones de Django y 15 modelos.
+- Identificadores UUID en todos los modelos.
+- Eliminación lógica o *soft delete*.
+- Fechas de creación, modificación y eliminación.
+- Relaciones entre modelos y variedad de tipos de datos.
+- API REST con operaciones GET, POST, PUT, PATCH y DELETE.
+- Migraciones iniciales y una segunda migración de cambios.
+- SQLite local; no requiere configurar una base de datos externa.
 
-Este proyecto consiste en desarrollar una API REST utilizando **TypeScript** y **Express**, implementando los cuatro métodos HTTP principales:
+## Aplicaciones y modelos
 
-- GET
-- POST
-- PUT
-- DELETE
+| Aplicación | Modelos |
+|---|---|
+| `principal` | Sede, Aula, PeriodoAcademico |
+| `estudiantes` | Estudiante, DireccionEstudiante, ContactoEmergencia |
+| `docentes` | Especialidad, Docente, Contrato |
+| `cursos` | Curso, Horario, MaterialCurso |
+| `inscripciones` | Inscripcion, Pago, Calificacion |
 
-La información se almacena temporalmente en un arreglo en memoria, por lo que no es necesaria una base de datos.
+## Instrucciones de ejecución
 
----
+### 1. Clonar el repositorio y seleccionar la rama
 
-# Tecnologías utilizadas
-
-- Node.js
-- TypeScript
-- Express
-- tsx
-- Git
-- GitHub
-- Insomnia
-
----
-
-# Instalación
-
-1. Clonar el repositorio
-
-```bash
-git clone https://github.com/DenilsonDiaz/API_Cuatro_Metodos.git
-```
-
-2. Entrar a la carpeta
-
-```bash
+```powershell
+git clone -b hw-03 https://github.com/DenilsonDiaz/API_Cuatro_Metodos.git
 cd API_Cuatro_Metodos
 ```
 
-3. Cambiar a la rama de la tarea
+### 2. Crear el ambiente virtual
 
-```bash
-git checkout hw-01
+```powershell
+py -m venv myenv
 ```
 
-4. Instalar dependencias
+### 3. Activar el ambiente virtual
 
-```bash
-npm install
+```powershell
+.\myenv\Scripts\Activate.ps1
 ```
 
-5. Ejecutar el proyecto
+### 4. Instalar dependencias
 
-```bash
-npm run start
+```powershell
+python -m pip install -r requirements.txt
 ```
 
-La API iniciará en:
+### 5. Aplicar migraciones
 
-```
-http://localhost:3000
-```
-
----
-
-# Endpoints
-
-## GET
-
-Obtiene todos los estudiantes.
-
-```
-GET /estudiantes
+```powershell
+python manage.py migrate
 ```
 
----
+### 6. Ejecutar el servidor
 
-## POST
-
-Agrega un estudiante.
-
-```
-POST /estudiantes
+```powershell
+python manage.py runserver
 ```
 
-Ejemplo:
+Abrir en el navegador: <http://127.0.0.1:8000/api/>
 
-```json
-{
-    "nombre":"Ana",
-    "carrera":"Arquitectura"
-}
+## Endpoints
+
+- `/api/sedes/`
+- `/api/aulas/`
+- `/api/periodos/`
+- `/api/estudiantes/`
+- `/api/direcciones/`
+- `/api/contactos-emergencia/`
+- `/api/especialidades/`
+- `/api/docentes/`
+- `/api/contratos/`
+- `/api/cursos/`
+- `/api/horarios/`
+- `/api/materiales/`
+- `/api/inscripciones/`
+- `/api/pagos/`
+- `/api/calificaciones/`
+
+## Migraciones
+
+Cada aplicación incluye su archivo `0001_initial.py`. La aplicación `principal` también contiene `0002_sede_correo_alter_sede_telefono.py`, que agrega el campo `correo` y modifica la longitud de `telefono`. Esto demuestra el flujo de cambios solicitado.
+
+## Pruebas
+
+```powershell
+python manage.py test
 ```
 
----
-
-## PUT
-
-Actualiza un estudiante.
-
-```
-PUT /estudiantes/1
-```
-
-Ejemplo:
-
-```json
-{
-    "nombre":"Denilson Yair",
-    "carrera":"Ingeniería en Sistemas"
-}
-```
-
----
-
-## DELETE
-
-Elimina un estudiante.
-
-```
-DELETE /estudiantes/2
-```
-
----
-
-# Autor
-
-Denilson Yair Díaz López
+Las pruebas verifican la creación de registros con UUID y el funcionamiento del *soft delete*.

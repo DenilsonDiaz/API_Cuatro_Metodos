@@ -1,0 +1,9 @@
+myenv/
+venv/
+env/
+entorno/
+__pycache__/
+*.py[cod]
+db.sqlite3
+.vscode/
+.env
