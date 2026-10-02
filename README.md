@@ -14,6 +14,7 @@ API REST desarrollada con Django y Django REST Framework para administrar inform
 - Fechas de creación, modificación y eliminación.
 - Relaciones entre modelos y variedad de tipos de datos.
 - API REST con operaciones GET, POST, PUT, PATCH y DELETE.
+- Autenticación JWT obligatoria en todos los endpoints de la API.
 - Migraciones iniciales y una segunda migración de cambios.
 - SQLite local; no requiere configurar una base de datos externa.
 
@@ -54,13 +55,21 @@ py -m venv myenv
 python -m pip install -r requirements.txt
 ```
 
-### 5. Aplicar migraciones
+### 5. Configurar la clave de Django
+
+```powershell
+$env:DJANGO_SECRET_KEY = "CAMBIE_ESTA_CLAVE_POR_UNA_CLAVE_SEGURA"
+```
+
+La variable debe configurarse cada vez que se abra una nueva terminal.
+
+### 6. Aplicar migraciones
 
 ```powershell
 python manage.py migrate
 ```
 
-### 6. Ejecutar el servidor
+### 7. Ejecutar el servidor
 
 ```powershell
 python manage.py runserver
@@ -68,7 +77,72 @@ python manage.py runserver
 
 Abrir en el navegador: <http://127.0.0.1:8000/api/>
 
+## Autenticación JWT
+
+### 1. Crear un usuario administrador
+
+```powershell
+python manage.py createsuperuser
+```
+
+### 2. Obtener los tokens
+
+Enviar una petición `POST` a:
+
+```text
+http://127.0.0.1:8000/api/token/
+```
+
+Contenido JSON:
+
+```json
+{
+  "username": "admin",
+  "password": "CONTRASEÑA_CREADA"
+}
+```
+
+La respuesta contiene los tokens `access` y `refresh`.
+
+### 3. Acceder a los endpoints protegidos
+
+Agregar el siguiente encabezado a cada petición:
+
+```text
+Authorization: Bearer TOKEN_ACCESS
+```
+
+### 4. Renovar el token de acceso
+
+Enviar una petición `POST` a `/api/token/refresh/`:
+
+```json
+{
+  "refresh": "TOKEN_REFRESH"
+}
+```
+
+### 5. Verificar un token
+
+Enviar una petición `POST` a `/api/token/verify/`:
+
+```json
+{
+  "token": "TOKEN_ACCESS"
+}
+```
+
+El token de acceso dura 30 minutos y el token de renovación dura un día.
+
 ## Endpoints
+
+### Autenticación
+
+- `POST /api/token/`
+- `POST /api/token/refresh/`
+- `POST /api/token/verify/`
+
+### Recursos protegidos
 
 - `/api/sedes/`
 - `/api/aulas/`
@@ -96,4 +170,4 @@ Cada aplicación incluye su archivo `0001_initial.py`. La aplicación `principal
 python manage.py test
 ```
 
-Las pruebas verifican la creación de registros con UUID y el funcionamiento del *soft delete*.
+Las pruebas verifican la autenticación JWT, la protección de endpoints, la renovación y validación de tokens, la creación con UUID y el funcionamiento del *soft delete*.
