@@ -1,4 +1,4 @@
-# HW-04 - Deployment con Vite y AWS
+# HW-04 - Deployment de Vite en AWS
 
 Página web creada con Vite y preparada para publicarse automáticamente en Amazon S3 y CloudFront mediante GitHub Actions.
 
@@ -11,6 +11,8 @@ Página web creada con Vite y preparada para publicarse automáticamente en Amaz
 - Amazon CloudFront
 
 ## Ejecutar el proyecto
+
+Se necesita tener instalado Node.js 22 o una versión compatible.
 
 ```bash
 git clone -b hw-04 https://github.com/DenilsonDiaz/API_Cuatro_Metodos.git
@@ -32,7 +34,7 @@ El comando `npm run build` crea la carpeta `dist/` con los archivos optimizados.
 
 ## Pipeline de deployment
 
-El workflow `.github/workflows/deploy.yml` se ejecuta al subir cambios a la rama `hw-04` o de forma manual. El proceso realiza lo siguiente:
+El workflow `.github/workflows/deploy.yml` se ejecuta al subir cambios a la rama `hw-04` o de forma manual desde GitHub Actions. El proceso realiza lo siguiente:
 
 1. Instala las dependencias con `npm ci`.
 2. Genera el build con `npm run build`.
@@ -49,4 +51,18 @@ El repositorio utiliza estos secretos de GitHub Actions:
 
 ## Sitio publicado
 
-La URL pública se agregará después de crear la distribución de CloudFront.
+El sitio se encuentra disponible mediante CloudFront:
+
+**URL:** [https://d3mdipds4au9nj.cloudfront.net](https://d3mdipds4au9nj.cloudfront.net)
+
+## Evidencias
+
+### Ejecución correcta del pipeline
+
+![Pipeline ejecutado correctamente](docs/evidencias/pipeline-exitoso.png)
+
+### Sitio publicado en CloudFront
+
+![Página principal del portal](docs/evidencias/cdn-inicio.png)
+
+![Sección de servicios del portal](docs/evidencias/cdn-servicios.png)
