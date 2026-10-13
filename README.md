@@ -1,138 +1,52 @@
-# API Cuatro Métodos
+# HW-04 - Deployment con Vite y AWS
 
-## Información del estudiante
+Página web creada con Vite y preparada para publicarse automáticamente en Amazon S3 y CloudFront mediante GitHub Actions.
 
-**Nombre:** Denilson Yair Díaz López
+## Tecnologías
 
-**Curso:** Arquitectura de Sistemas
+- Vite
+- HTML, CSS y JavaScript
+- GitHub Actions
+- Amazon S3
+- Amazon CloudFront
 
----
-
-## Descripción
-
-Este proyecto consiste en desarrollar una API REST utilizando **TypeScript** y **Express**, implementando los cuatro métodos HTTP principales:
-
-- GET
-- POST
-- PUT
-- DELETE
-
-La información se almacena temporalmente en un arreglo en memoria, por lo que no es necesaria una base de datos.
-
----
-
-# Tecnologías utilizadas
-
-- Node.js
-- TypeScript
-- Express
-- tsx
-- Git
-- GitHub
-- Insomnia
-
----
-
-# Instalación
-
-1. Clonar el repositorio
+## Ejecutar el proyecto
 
 ```bash
-git clone https://github.com/DenilsonDiaz/API_Cuatro_Metodos.git
-```
-
-2. Entrar a la carpeta
-
-```bash
+git clone -b hw-04 https://github.com/DenilsonDiaz/API_Cuatro_Metodos.git
 cd API_Cuatro_Metodos
-```
-
-3. Cambiar a la rama de la tarea
-
-```bash
-git checkout hw-01
-```
-
-4. Instalar dependencias
-
-```bash
 npm install
+npm run dev
 ```
 
-5. Ejecutar el proyecto
+Vite mostrará la dirección local del proyecto en la terminal.
+
+## Generar la versión de producción
 
 ```bash
-npm run start
+npm run build
+npm run preview
 ```
 
-La API iniciará en:
+El comando `npm run build` crea la carpeta `dist/` con los archivos optimizados.
 
-```
-http://localhost:3000
-```
+## Pipeline de deployment
 
----
+El workflow `.github/workflows/deploy.yml` se ejecuta al subir cambios a la rama `hw-04` o de forma manual. El proceso realiza lo siguiente:
 
-# Endpoints
+1. Instala las dependencias con `npm ci`.
+2. Genera el build con `npm run build`.
+3. Copia el contenido de `dist/` al bucket de S3.
+4. Invalida la caché de CloudFront.
 
-## GET
+El repositorio utiliza estos secretos de GitHub Actions:
 
-Obtiene todos los estudiantes.
+- `AWS_ACCESS_KEY_ID`
+- `AWS_SECRET_ACCESS_KEY`
+- `AWS_REGION`
+- `S3_BUCKET_NAME`
+- `CLOUDFRONT_DISTRIBUTION_ID`
 
-```
-GET /estudiantes
-```
+## Sitio publicado
 
----
-
-## POST
-
-Agrega un estudiante.
-
-```
-POST /estudiantes
-```
-
-Ejemplo:
-
-```json
-{
-    "nombre":"Ana",
-    "carrera":"Arquitectura"
-}
-```
-
----
-
-## PUT
-
-Actualiza un estudiante.
-
-```
-PUT /estudiantes/1
-```
-
-Ejemplo:
-
-```json
-{
-    "nombre":"Denilson Yair",
-    "carrera":"Ingeniería en Sistemas"
-}
-```
-
----
-
-## DELETE
-
-Elimina un estudiante.
-
-```
-DELETE /estudiantes/2
-```
-
----
-
-# Autor
-
-Denilson Yair Díaz López
+La URL pública se agregará después de crear la distribución de CloudFront.
