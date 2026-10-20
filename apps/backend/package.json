@@ -1,0 +1,15 @@
+{
+  "name": "@monorepo/backend",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "tsc -p tsconfig.json && node --watch dist/server.js",
+    "start": "node dist/server.js",
+    "build": "tsc -p tsconfig.json",
+    "test": "node --test src/*.test.ts",
+    "check": "tsc -p tsconfig.json --noEmit"
+  },
+  "dependencies": {"@monorepo/shared": "*", "cors": "^2.8.5", "express": "^5.1.0"},
+  "devDependencies": {"@types/cors": "^2.8.18", "@types/express": "^5.0.2", "tsx": "^4.19.4", "typescript": "^5.8.3"}
+}

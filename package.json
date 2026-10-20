@@ -1,0 +1,17 @@
+{
+  "name": "sistema-reservas-monorepo",
+  "version": "1.0.0",
+  "private": true,
+  "packageManager": "npm@11.9.0",
+  "workspaces": ["apps/*", "packages/*"],
+  "scripts": {
+    "dev": "turbo dev",
+    "dev:frontend": "npm run dev --workspace=@monorepo/frontend",
+    "dev:backend": "npm run dev --workspace=@monorepo/backend",
+    "build": "turbo build",
+    "test": "turbo test",
+    "check": "turbo check"
+  },
+  "devDependencies": {"turbo": "^2.5.8", "typescript": "^5.8.3"},
+  "engines": {"node": ">=20"}
+}

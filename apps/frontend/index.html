@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Frontend del monorepo de Arquitectura de Sistemas" />
+    <title>Monorepo | Estado del sistema</title>
+  </head>
+  <body>
+    <main class="page">
+      <section class="hero">
+        <p class="eyebrow">ARQUITECTURA DE SISTEMAS</p>
+        <h1>Sistema de Reservas</h1>
+        <p class="subtitle">Dos aplicaciones y una librería compartida administradas con Turborepo.</p>
+      </section>
+      <section class="grid" aria-label="Estado de las aplicaciones">
+        <article class="card">
+          <div class="card-title"><span class="icon">F</span><div><p>APLICACIÓN 01</p><h2>Frontend</h2></div></div>
+          <span class="badge">Activo</span>
+          <p id="frontend-message" class="message"></p>
+        </article>
+        <article class="card">
+          <div class="card-title"><span class="icon api">A</span><div><p>APLICACIÓN 02</p><h2>Backend REST</h2></div></div>
+          <span id="backend-badge" class="badge pending">Consultando</span>
+          <p id="backend-message" class="message">Verificando la conexión con la API...</p>
+        </article>
+      </section>
+      <section class="shared">
+        <div><p class="eyebrow">CÓDIGO COMPARTIDO</p><h2>@monorepo/shared</h2></div>
+        <p>La misma librería proporciona los tipos y mensajes que utilizan el frontend y el backend.</p>
+      </section>
+      <footer>Actividad HW-05 · Denilson Yair Díaz López</footer>
+    </main>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
