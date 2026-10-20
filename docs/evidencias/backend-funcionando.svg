@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="900" viewBox="0 0 1440 900">
+  <rect width="1440" height="900" fill="#f4f6f9"/>
+  <rect x="70" y="55" width="1300" height="790" rx="18" fill="white" stroke="#d9dee8"/>
+  <rect x="70" y="55" width="1300" height="72" rx="18" fill="#e9edf4"/>
+  <circle cx="108" cy="91" r="10" fill="#ff605c"/><circle cx="138" cy="91" r="10" fill="#ffbd44"/><circle cx="168" cy="91" r="10" fill="#00ca4e"/>
+  <rect x="225" y="73" width="1010" height="38" rx="19" fill="white" stroke="#ccd3df"/>
+  <text x="250" y="98" fill="#46546b" font-family="Arial" font-size="17">http://localhost:3000/api/status</text>
+  <text x="120" y="200" fill="#1f2937" font-family="Arial" font-size="24" font-weight="bold">Respuesta del backend REST</text>
+  <rect x="120" y="240" width="1200" height="430" rx="14" fill="#101827"/>
+  <text x="165" y="300" fill="#9ca3af" font-family="monospace" font-size="22">{</text>
+  <text x="195" y="350" fill="#7dd3fc" font-family="monospace" font-size="22">"application"</text><text x="390" y="350" fill="#e5e7eb" font-family="monospace" font-size="22">:</text><text x="420" y="350" fill="#86efac" font-family="monospace" font-size="22">"Backend REST"</text><text x="600" y="350" fill="#e5e7eb" font-family="monospace" font-size="22">,</text>
+  <text x="195" y="410" fill="#7dd3fc" font-family="monospace" font-size="22">"message"</text><text x="340" y="410" fill="#e5e7eb" font-family="monospace" font-size="22">:</text><text x="370" y="410" fill="#86efac" font-family="monospace" font-size="22">"Backend REST está utilizando la librería @monorepo/shared"</text><text x="1120" y="410" fill="#e5e7eb" font-family="monospace" font-size="22">,</text>
+  <text x="195" y="470" fill="#7dd3fc" font-family="monospace" font-size="22">"status"</text><text x="325" y="470" fill="#e5e7eb" font-family="monospace" font-size="22">:</text><text x="355" y="470" fill="#86efac" font-family="monospace" font-size="22">"activo"</text><text x="455" y="470" fill="#e5e7eb" font-family="monospace" font-size="22">,</text>
+  <text x="195" y="530" fill="#7dd3fc" font-family="monospace" font-size="22">"sharedLibrary"</text><text x="405" y="530" fill="#e5e7eb" font-family="monospace" font-size="22">:</text><text x="435" y="530" fill="#86efac" font-family="monospace" font-size="22">"@monorepo/shared"</text>
+  <text x="165" y="590" fill="#9ca3af" font-family="monospace" font-size="22">}</text>
+  <rect x="120" y="715" width="151" height="42" rx="21" fill="#daf5e8"/>
+  <circle cx="145" cy="736" r="7" fill="#19a97a"/>
+  <text x="162" y="743" fill="#137454" font-family="Arial" font-size="17" font-weight="bold">200 OK</text>
+  <text x="300" y="743" fill="#667085" font-family="Arial" font-size="17">La API respondió correctamente utilizando la librería compartida.</text>
+</svg>
